@@ -17,7 +17,10 @@ Username | subreddit | Timestamp of comment
 22,610 Users
 34,967 subreddit
 
-Reference Material: https://towardsdatascience.com/build-your-own-clustering-based-recommendation-engine-in-15-minutes-bdddd591d394
+Reference Material: 
+https://towardsdatascience.com/build-your-own-clustering-based-recommendation-engine-in-15-minutes-bdddd591d394
+https://www.kaggle.com/supratimhaldar/clustering-movies-with-collaborative-filtering
+https://medium.com/analytics-vidhya/k-nearest-neighbors-all-you-need-to-know-1333eb5f0ed0
 
 
 Process:
@@ -32,6 +35,7 @@ Final Product
 SQL Script
     import the data to CSV (save the SQL Script for the code review)
          our SQL query was designed to Group by User, count of UTC, 
+    import Subreddit mapping <!-- https://www.youtube.com/watch?v=zvrRI0r6f2Q -->
 
 clean.py - Pipeline
     try/except to import the CSV outputted by the SQL Script. If not found, run the SQL Script.
@@ -41,6 +45,8 @@ clean.py - Pipeline
         
 cluster.py
     try/except to take that CSV and run the selected Clustering Model on it. Evaluate the Model. Pickle that Trained Model
+    using "cosine similarity" as distance metric in KNearestNeighbors instead of Euclidean Distance due to high dimensionality, Euclidean distance is often repetitive
+    https://medium.com/analytics-vidhya/k-nearest-neighbors-all-you-need-to-know-1333eb5f0ed0 <!-- drop the fuzzy matching from here, but use the rest -->
 
 
 main.py - our command-line interface, accepting the inputted arguments
