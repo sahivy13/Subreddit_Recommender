@@ -35,16 +35,21 @@ Final Product
 SQL Script
     import the data to CSV (save the SQL Script for the code review)
          our SQL query was designed to Group by User, count of UTC, 
-    import Subreddit mapping <!-- https://www.youtube.com/watch?v=zvrRI0r6f2Q -->
+
+pull.py - Pipeline Start
+    Query the Database, collect 100k rows (only the IDs)
+    create a map of subreddit IDs to subreddit Names
+    return the DataFrame and the map
+
 
 clean.py - Pipeline
-    try/except to import the CSV outputted by the SQL Script. If not found, run the SQL Script.
-        pipepline to clean the data .lower()
-        export to CSV
-        
+    get the DataFrame from pull.py
+        pipepline to transform the data - 
+    return the transformed DataFrame  
         
 cluster.py
-    try/except to take that CSV and run the selected Clustering Model on it. Evaluate the Model. Pickle that Trained Model
+    import the Transformed DataFrame
+    run the selected Clustering Model on it. Evaluate the Model. Pickle that Trained Model
     using "cosine similarity" as distance metric in KNearestNeighbors instead of Euclidean Distance due to high dimensionality, Euclidean distance is often repetitive
     https://medium.com/analytics-vidhya/k-nearest-neighbors-all-you-need-to-know-1333eb5f0ed0 <!-- drop the fuzzy matching from here, but use the rest -->
 
